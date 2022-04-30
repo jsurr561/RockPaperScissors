@@ -30,20 +30,23 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == 'rock' && computerSelection == 'scissors') {
         console.log('Rock beats Scissors, You Win!');
+        return 'win';
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         console.log('Scissors beats Paper, You win!');
+        return 'win';
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
         console.log('Paper beats Rock, You Win!');
+        return 'win';
     } else if (playerSelection == computerSelection) {
         console.log('Tie! Try Again!');
         playRound(prompt('Try Again'), computerPlay());
     } else {
         console.log(capitalize(computerSelection) + ' beats ' + capitalize(playerSelection) + ', You Lose!');
+        return 'lose';
     }
 }
 
-console.log(playRound('scissors', 'paper'))
-
+console.log(playRound(prompt('Select Item'), computerPlay()));
 
 //win Variable Check
 //if (console.log(playRound('rock', 'rock')) == undefined) {
