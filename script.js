@@ -14,7 +14,8 @@ function computerPlay() {
 }
 
 function capitalize(string) {
-    string = string.toLowerCase();
+    string = toString(string);
+    string = string.toLowerCase(); //stopped working after writing game()
     first = string.slice(0,1);
     first = first.toUpperCase();
     string = first + (string.slice(1));
@@ -40,22 +41,39 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == computerSelection) {
         console.log('Tie! Try Again!');
         playRound(prompt('Try Again'), computerPlay());
+        return 'tie';  //Currently returns 'tie' regardless of replay outcome...
     } else {
         console.log(capitalize(computerSelection) + ' beats ' + capitalize(playerSelection) + ', You Lose!');
         return 'lose';
     }
 }
 
-console.log(playRound(prompt('Select Item'), computerPlay()));
+function game() {
+    let win;
+    let loss;
 
-//win Variable Check
-//if (console.log(playRound('rock', 'rock')) == undefined) {
-//    console.log('Match')
-//} else {
-//    console.log('Nope!')
-//}
+    for (let i = 0; i < 5; i++) {
+        playRound(prompt('Select Item'), computerPlay);
+        if (playRound() == 'win') {
+            win++;
+        } else {
+            loss++;
+        }
+    }
 
+    win = toString(win);
+    loss = toString(loss);
 
+    let result = "Player: " + win + " Computer: " + loss; // win and loss both print as "object Undefined"
+
+    if (win > loss) {
+        console.log(result + " You Win!");
+    } else {
+        console.log(result + " You Lose!");
+    }
+}
+
+game();
 //function game
 //plays a 5 round game
 //use prompt() to get user input
