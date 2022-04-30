@@ -13,15 +13,45 @@ function computerPlay() {
     return answer;
 }
 
-alert(computerPlay());
+function capitalize(string) {
+    string = string.toLowerCase();
+    first = string.slice(0,1);
+    first = first.toUpperCase();
+    string = first + (string.slice(1));
+    return string;
+}
 
 //function playRound (playerSelection, computerSelection)
 //return winner/loser + message
 //make playerSelection case insensitive
 
-//function playRound(playerSelection, computerSelection) {
-//    if playRound.toLowerCase() ==
+function playRound(playerSelection, computerSelection) {
+
+
+    if (playerSelection == 'rock' && computerSelection == 'scissors') {
+        console.log('Rock beats Scissors, You Win!');
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+        console.log('Scissors beats Paper, You win!');
+    } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+        console.log('Paper beats Rock, You Win!');
+    } else if (playerSelection == computerSelection) {
+        console.log('Tie! Try Again!');
+        playRound(prompt('Try Again'), computerPlay());
+    } else {
+        console.log(capitalize(computerSelection) + ' beats ' + capitalize(playerSelection) + ', You Lose!');
+    }
+}
+
+console.log(playRound('scissors', 'paper'))
+
+
+//win Variable Check
+//if (console.log(playRound('rock', 'rock')) == undefined) {
+//    console.log('Match')
+//} else {
+//    console.log('Nope!')
 //}
+
 
 //function game
 //plays a 5 round game
