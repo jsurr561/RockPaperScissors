@@ -13,6 +13,7 @@ function computerPlay() {
     return answer;
 }
 
+//Capitalize function currently not in use due to bugs (Object Undefined)
 function capitalize(string) {
     string = toString(string);
     string = string.toLowerCase(); //stopped working after writing game()
@@ -22,9 +23,7 @@ function capitalize(string) {
     return string;
 }
 
-//function playRound (playerSelection, computerSelection)
-//return winner/loser + message
-//make playerSelection case insensitive
+//Plays one round of Rock Paper Scissors and returns whether the player won.
 
 function playRound(playerSelection, computerSelection) {
 
@@ -39,40 +38,42 @@ function playRound(playerSelection, computerSelection) {
         console.log('Paper beats Rock, You Win!');
         return 'win';
     } else if (playerSelection == computerSelection) {
-        console.log('Tie! Try Again!');
-        playRound(prompt('Try Again'), computerPlay());
+        //console.log('Tie! Try Again!');
         return 'tie';  //Currently returns 'tie' regardless of replay outcome...
     } else {
         console.log(computerSelection + ' beats ' + playerSelection + ', You Lose!'); //Would like to capitalize output
         return 'lose';
     }
 }
+//playRound test
+//const playerSelection = "rock";
+//const computerSelection = computerPlay();
+//console.log(playRound(playerSelection, computerSelection));
 
 function game() {
     let win = 0;
     let loss = 0;
 
-    for (let i = 0; i < 5; i++) { //wrong number of loops?
-        playRound(prompt('Select Item'), computerPlay);
+    for (let i = 0; i <= 1; i++) { //wrong number of loops?
+        const computerSelection = computerPlay();
+        const playerSelection = prompt('Select Item');
+
+        playRound(playerSelection, computerSelection);
         if (playRound() == 'win') {
             win++;
-        } else {
+        } else if (playRound() == 'lose') {
             loss++;
+        } else if (playRound() == 'tie') {
+            playRound(prompt('Tie! Try Again'), computerSelection)
         }
     }
 
-    //win = toString(win);
-    //loss = toString(loss);
-
-    alert(win);
-    alert(loss);
-
-    let result = "Player: " + win + " Computer: " + loss; // win and loss both print as "object Undefined"
+    let result = "Player: " + win + " Computer: " + loss;
 
     if (win > loss) {
-        console.log(result + " You Win!");
+        console.log(result + " You Win the Match!");
     } else {
-        console.log(result + " You Lose!");
+        console.log(result + " You Lose the Match!");
     }
 }
 
