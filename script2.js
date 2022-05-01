@@ -1,3 +1,12 @@
+function capitalize(string) {
+    string = string.toString();
+    string = string.toLowerCase(); //stopped working after writing game()
+    first = string.slice(0,1);
+    first = first.toUpperCase();
+    string = first + (string.slice(1));
+    return string;
+}
+
 function computerPlay() {
     let num = Math.floor(Math.random()*3) + 1;
     let answer;
@@ -21,13 +30,13 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock') ||
         (playerSelection == 'scissors' && computerSelection == 'paper')) {
             
-            console.log(playerSelection + " beats " + computerSelection + ", You win this round!");
+            console.log(capitalize(playerSelection) + " beats " + capitalize(computerSelection) + ", You win this round!");
             return 'win';
         } else if (playerSelection == computerSelection) {
             console.log('You Tied!');
             return 'tie';
         } else {
-            console.log(playerSelection + " loses to " + computerSelection + ", You lose this round.");
+            console.log(capitalize(playerSelection) + " loses to " + capitalize(computerSelection) + ", You lose this round.");
             return 'lose';
         }
 }
