@@ -1,3 +1,6 @@
+//Rock Paper Scissors, v1.0
+//JD Surrett 4/30/22
+
 function capitalize(string) {
     string = string.toString();
     string = string.toLowerCase(); //stopped working after writing game()
