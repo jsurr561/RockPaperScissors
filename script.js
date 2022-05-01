@@ -43,16 +43,16 @@ function playRound(playerSelection, computerSelection) {
         playRound(prompt('Try Again'), computerPlay());
         return 'tie';  //Currently returns 'tie' regardless of replay outcome...
     } else {
-        console.log(capitalize(computerSelection) + ' beats ' + capitalize(playerSelection) + ', You Lose!');
+        console.log(computerSelection + ' beats ' + playerSelection + ', You Lose!'); //Would like to capitalize output
         return 'lose';
     }
 }
 
 function game() {
-    let win;
-    let loss;
+    let win = 0;
+    let loss = 0;
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) { //wrong number of loops?
         playRound(prompt('Select Item'), computerPlay);
         if (playRound() == 'win') {
             win++;
@@ -61,8 +61,11 @@ function game() {
         }
     }
 
-    win = toString(win);
-    loss = toString(loss);
+    //win = toString(win);
+    //loss = toString(loss);
+
+    alert(win);
+    alert(loss);
 
     let result = "Player: " + win + " Computer: " + loss; // win and loss both print as "object Undefined"
 
