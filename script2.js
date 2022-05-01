@@ -33,7 +33,7 @@ function playRound(playerSelection, computerSelection) {
             console.log(capitalize(playerSelection) + " beats " + capitalize(computerSelection) + ", You win this round!");
             return 'win';
         } else if (playerSelection == computerSelection) {
-            console.log('You Tied!');
+            console.log('You Tied, Try Again!');
             return 'tie';
         } else {
             console.log(capitalize(playerSelection) + " loses to " + capitalize(computerSelection) + ", You lose this round.");
@@ -47,7 +47,7 @@ function game() {
 
     for(let i=0; i<5; i++) {
         const computerChoice = computerPlay();
-        const playerChoice = prompt('Select Item');
+        const playerChoice = prompt('Choose Your Weapon!');
 
         let result = playRound(playerChoice, computerChoice);
 
@@ -56,9 +56,9 @@ function game() {
         } else if (result == 'lose') {
             loss++;
         } else if (result == 'tie') {
-            i--; //not sure if this works, if not probably need to call playRound again somehow
+            i--;
         } else {
-            console.log('Error in game() if loop')
+            console.log('Error in game() _if_ loop')
         }
 
     }
