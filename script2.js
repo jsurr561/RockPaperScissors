@@ -21,13 +21,13 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock') ||
         (playerSelection == 'scissors' && computerSelection == 'paper')) {
             
-            console.log('You won that bout!');
+            console.log(playerSelection + " beats " + computerSelection + ", You win this round!");
             return 'win';
         } else if (playerSelection == computerSelection) {
             console.log('You Tied!');
             return 'tie';
         } else {
-            console.log('You lose that bout!');
+            console.log(playerSelection + " loses to " + computerSelection + ", You lose this round.");
             return 'lose';
         }
 }
@@ -56,7 +56,7 @@ function game() {
     if (win > loss) {
         console.log('You win the match!')
     } else if (win < loss) {
-        console.log('you Lose the match!')
+        console.log('You lose the match!')
     } else {
         console.log('Error at end of game()')
     }
