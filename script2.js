@@ -1,6 +1,12 @@
 //Rock Paper Scissors, v1.0
 //JD Surrett 4/30/22
 
+//Adds scoreboard to html
+const scoreboard = document.querySelector('#scoreboard');
+const score = document.createElement('p');
+score.textContent = 'Player: 0 Computer: 0'
+scoreboard.appendChild(score);
+
 //Convenience Capitalize function
 function capitalize(string) {
     string = string.toString();
@@ -84,3 +90,5 @@ function game() {
 //Adds event listener to each button that calls playRound(button.id)
 const btn = Array.from(document.querySelectorAll('.choiceButton'));
 btn.forEach(button => button.addEventListener('click', () => playRound(button.id, computerPlay())));
+
+//
