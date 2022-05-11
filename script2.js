@@ -44,6 +44,18 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
+function output(something) {
+    console.log(something);
+}
+
+//Above is working code
+//Working on code below
+
+const btn = Array.from(document.querySelectorAll('.button'));
+btn.forEach(button => button.addEventListener('click', () => playRound(button.id, computerPlay())));
+
+//Working on code above
+//Skipping this part for now:
 function game() {
     let win = 0;
     let loss = 0;
@@ -63,6 +75,9 @@ function game() {
         } else {
             console.log('Error in game() _if_ loop')
         }
+        console.log(`Player: ${win} Computer: ${loss}`);
+
+        if (win >= 3 || loss >= 3) break;
 
     }
     if (win > loss) {
@@ -73,5 +88,3 @@ function game() {
         console.log('Error at end of game()')
     }
 }
-
-game()
