@@ -1,7 +1,7 @@
 //Rock Paper Scissors, v1.0
 //JD Surrett 4/30/22
 
-//Adds scoreboard to html
+//Adds elements to html
 const scoreboard = document.querySelector('#scoreboard');
 const score = document.createElement('p');
 score.textContent = 'Player: 0 Computer: 0'
@@ -11,6 +11,12 @@ const roundResultDisplay = document.querySelector('#roundResult');
 const roundResult = document.createElement('p');
 roundResult.textContent = "Choose Your Weapon!";
 roundResultDisplay.appendChild(roundResult);
+
+const gameResultDisplay = document.querySelector('#gameResult');
+const gameResult = document.createElement('h2');
+gameResultDisplay.appendChild(gameResult);
+
+const trans = document.querySelector('.buttons');
 
 //Convenience Capitalize function
 function capitalize(string) {
@@ -102,6 +108,8 @@ let computerWins = 0;
 
 //Adds event listener to each button that calls playRound(button.id)
 //Updates scoreboard
+//Declares Winner
+//Maybe make this whole block a function, load it on page-load, then call it again in New Game button??
 const btn = Array.from(document.querySelectorAll('.choiceButton'));
 btn.forEach(button => button.addEventListener('click', () => {
     let result = playRound(button.id, computerPlay());
@@ -116,9 +124,20 @@ btn.forEach(button => button.addEventListener('click', () => {
         score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
     } else {
         console.log('Error in button event listener');
-    }    
+    };
+    
+    if (playerWins == 5) {
+        gameResult.textContent = 'You Win the Match!';
+    } else if (computerWins == 5) {
+        gameResult.textContent = 'You Lose the Match!';
+    };
+
+    if (playerWins == 5 || computerWins ==5) {
+        trans.classList.add('transparent');
+    }
 
 }));
+
 
 //Resets Scoreboard
 const newGame = document.querySelector('#new');
@@ -127,4 +146,6 @@ newGame.addEventListener('click', () => {
     computerWins = 0;
     score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
     roundResult.textContent = 'Choose Your Weapon!'
+    gameResult.textContent = '';
+    trans.classList.remove('transparent');
 });
