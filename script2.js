@@ -87,8 +87,13 @@ function game() {
     }
 }
 
+//Declare score variables
+let playerWins = 0;
+let computerWins = 0;
+let roundResult = 'empty';
+
 //Adds event listener to each button that calls playRound(button.id)
-//Updates score
+//Updates scoreboard
 const btn = Array.from(document.querySelectorAll('.choiceButton'));
 btn.forEach(button => button.addEventListener('click', () => {
     let result = playRound(button.id, computerPlay());
@@ -107,7 +112,10 @@ btn.forEach(button => button.addEventListener('click', () => {
 
 }));
 
-//Tracks and updates scoreboard, declares winner
-let playerWins = 0;
-let computerWins = 0;
-
+//Resets Scoreboard
+const newGame = document.querySelector('#new');
+newGame.addEventListener('click', () => {
+    playerWins = 0;
+    computerWins = 0;
+    score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+});
