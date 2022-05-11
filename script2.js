@@ -88,7 +88,26 @@ function game() {
 }
 
 //Adds event listener to each button that calls playRound(button.id)
+//Updates score
 const btn = Array.from(document.querySelectorAll('.choiceButton'));
-btn.forEach(button => button.addEventListener('click', () => playRound(button.id, computerPlay())));
+btn.forEach(button => button.addEventListener('click', () => {
+    let result = playRound(button.id, computerPlay());
 
-//
+    if (result == 'win') {
+        playerWins++;
+        score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+    } else if (result == 'lose') {
+        computerWins++;
+        score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+    } else if (result == 'tie') {
+        score.textContent = `You Tied! \n Player: ${playerWins} Computer: ${computerWins}`;
+    } else {
+        console.log('Error in button event listener');
+    }    
+
+}));
+
+//Tracks and updates scoreboard, declares winner
+let playerWins = 0;
+let computerWins = 0;
+
