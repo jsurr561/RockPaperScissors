@@ -7,6 +7,11 @@ const score = document.createElement('p');
 score.textContent = 'Player: 0 Computer: 0'
 scoreboard.appendChild(score);
 
+const roundResultDisplay = document.querySelector('#roundResult');
+const roundResult = document.createElement('p');
+roundResult.textContent = "Choose Your Weapon!";
+roundResultDisplay.appendChild(roundResult);
+
 //Convenience Capitalize function
 function capitalize(string) {
     string = string.toString();
@@ -43,17 +48,20 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'scissors' && computerSelection == 'paper')) {
             
             console.log(capitalize(playerSelection) + " beats " + capitalize(computerSelection) + ", You win this round!");
+            roundResult.textContent = capitalize(playerSelection) + " beats " + capitalize(computerSelection) + ", You win this round!";
             return 'win';
         } else if (playerSelection == computerSelection) {
             console.log('You Tied, Try Again!');
+            roundResult.textContent = 'You Tied, Try Again!';
             return 'tie';
         } else {
             console.log(capitalize(playerSelection) + " loses to " + capitalize(computerSelection) + ", You lose this round.");
+            roundResult.textContent = capitalize(playerSelection) + " loses to " + capitalize(computerSelection) + ", You lose this round.";
             return 'lose';
         }
 }
 
-//Plays a best-of-5 game of rps
+//Plays a best-of-5 game of rps. NOT IN USE
 function game() {
     let win = 0;
     let loss = 0;
@@ -90,7 +98,7 @@ function game() {
 //Declare score variables
 let playerWins = 0;
 let computerWins = 0;
-let roundResult = 'empty';
+
 
 //Adds event listener to each button that calls playRound(button.id)
 //Updates scoreboard
@@ -105,7 +113,7 @@ btn.forEach(button => button.addEventListener('click', () => {
         computerWins++;
         score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
     } else if (result == 'tie') {
-        score.textContent = `You Tied! \n Player: ${playerWins} Computer: ${computerWins}`;
+        score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
     } else {
         console.log('Error in button event listener');
     }    
@@ -118,4 +126,5 @@ newGame.addEventListener('click', () => {
     playerWins = 0;
     computerWins = 0;
     score.textContent = `Player: ${playerWins} Computer: ${computerWins}`;
+    roundResult.textContent = 'Choose Your Weapon!'
 });
