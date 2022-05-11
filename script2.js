@@ -1,15 +1,17 @@
 //Rock Paper Scissors, v1.0
 //JD Surrett 4/30/22
 
+//Convenience Capitalize function
 function capitalize(string) {
     string = string.toString();
-    string = string.toLowerCase(); //stopped working after writing game()
+    string = string.toLowerCase(); 
     first = string.slice(0,1);
     first = first.toUpperCase();
     string = first + (string.slice(1));
     return string;
 }
 
+//Randomly determines the computer's choice
 function computerPlay() {
     let num = Math.floor(Math.random()*3) + 1;
     let answer;
@@ -28,6 +30,7 @@ function computerPlay() {
     return answer;
 }
 
+//Plays one round of RPS
 function playRound(playerSelection, computerSelection) {
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'paper' && computerSelection == 'rock') ||
@@ -44,6 +47,7 @@ function playRound(playerSelection, computerSelection) {
         }
 }
 
+//Plays a best-of-5 game of rps
 function game() {
     let win = 0;
     let loss = 0;
@@ -76,3 +80,7 @@ function game() {
         console.log('Error at end of game()')
     }
 }
+
+//Adds event listener to each button that calls playRound(button.id)
+const btn = Array.from(document.querySelectorAll('.choiceButton'));
+btn.forEach(button => button.addEventListener('click', () => playRound(button.id, computerPlay())));
