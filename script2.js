@@ -76,5 +76,3 @@ function game() {
         console.log('Error at end of game()')
     }
 }
-
-game()
