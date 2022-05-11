@@ -64,6 +64,9 @@ function game() {
             console.log('Error in game() _if_ loop')
         }
 
+        console.log(`Player: ${win} Computer: ${loss}`);
+        if (win >= 3 || loss >= 3) break;
+
     }
     if (win > loss) {
         console.log('You win the match!')
